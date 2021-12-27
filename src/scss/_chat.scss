@@ -1,0 +1,236 @@
+.chat {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 30px 60px;
+  overflow-x: hidden;
+  transition: transform .25s;
+  @media (max-width: 991px) {
+    padding: 15px 30px;
+  }
+  @media (max-width: 767px) {
+    position: absolute;
+    background: linear-gradient(107.56deg, #ffffff 0%, #f2f6f7 100%);
+    height: -webkit-fill-available;
+    padding:15px;
+}
+&.closeChat {
+    @media (max-width: 767px) {
+        transform: translateX(-440px);
+    }
+}
+&.openChat {
+    @media (max-width: 767px) {
+        transform: translateX(0);
+        width: calc(100vw - 30px);
+    }
+  }
+  .top {
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    button.clearChat {
+      @include defStyle(12, 400, primary-color);
+      background-color: ObjRet($colors, hvr-color);
+      box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.1);
+      border: 1px solid #f8f1f1;
+      border-radius: 14px;
+      padding: 8px 35px;
+      cursor: pointer;
+      transition: all 0.25s;
+      &:hover {
+        background-color: ObjRet($colors, bg-secondary);
+        color: #ffffff;
+        border-color: ObjRet($colors, bg-secondary);
+      }
+      @media(max-width:767px){
+          margin-left: auto;
+      }
+    }
+    button.MuiButtonBase-root{
+        margin-left: auto;
+        svg{
+            font-size: 20px;
+            color: ObjRet($colors,primary-color);
+        }
+        @media(min-width:768px){
+            display:none;
+        }
+    }
+  }
+  .middle {
+    display: flex;
+    flex-direction: column;
+    row-gap: 30px;
+    flex: 1;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    overflow-y: scroll;
+    padding-left: 18px;
+    &::-webkit-scrollbar {
+      appearance: none;
+    }
+    @media(max-width:767px){
+      margin:16px 0;
+    }
+    .message__container {
+      .user__name {
+        @include defStyle(12, 500, primary-color);
+        text-transform: capitalize;
+        margin-bottom: 10px;
+      }
+      .inner {
+        display: flex;
+        column-gap: 10px;
+        .messages {
+          display: flex;
+          flex-direction: column;
+          row-gap: 10px;
+          width: 100%;
+          .text {
+            max-width: 188px;
+            padding: 16px 20px 14px 20px;
+            background-color: ObjRet($colors, bg-primary);
+            border-radius: 0px 14px 14px 14px;
+            p:first-child {
+              @include defStyle(12, 400, primary-color);
+              margin-bottom: 8px;
+              line-height: 18px;
+            }
+            p:last-child {
+              @include defStyle(10, 400, bg-secondary);
+              text-align: end;
+              svg{
+                font-size: 12px;
+                color: ObjRet($colors,bg-secondary);
+                animation-name: TimeLoading;
+                animation-duration: 1s;
+                animation-iteration-count: infinite;
+                animation-timing-function:cubic-bezier(0.4, 0, 1, 1);  
+              }
+            }
+          }
+        }
+      }
+      &.message__sender {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        .user__name {
+          text-align: end;
+        }
+        .inner {
+          max-width: 256px;
+          width: 100%;
+          .MuiAvatar-root {
+            order: 2;
+          }
+          .messages {
+            order: 1;
+            .text {
+              border-radius: 14px 0px 14px 14px;
+              background-color: ObjRet($colors, bg-third);
+              p {
+                color: ObjRet($colors, hvr-color);
+                svg{
+                  color: ObjRet($colors,hvr-color);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .footer {
+    border: 1px solid rgba(150, 169, 186, 0.7);
+    border-radius: 14px;
+    display: flex;
+    padding-left: 10px;
+    @media(max-width: 375px){
+      padding-left: 5px;
+    }
+    .rotate {
+      transform: rotate(45deg);
+    }
+    svg {
+      color: ObjRet($colors, bg-secondary);
+      @media(max-width:375px){
+        font-size: 20px;
+      }
+    }
+    input {
+      @include defStyle(12, 400, primary-color);
+      margin: 0 10px;
+      border: none;
+      outline: none;
+      flex: 1;
+      background: transparent;
+    }
+    .submitBtn {
+      @include defStyle(12, 600, hvr-color);
+      background-color: ObjRet($colors, bg-secondary);
+      text-transform: capitalize;
+      letter-spacing: normal;
+      width: 108px;
+      border-radius: 14px;
+      @media(max-width: 375px){
+        width: auto;
+        min-width: auto;
+        background-color: transparent;
+      }
+      svg {
+        color: ObjRet($colors, hvr-color);
+        @media(max-width:375px){
+          color:ObjRet($colors,bg-secondary);
+        }
+      }
+      span{
+        @media(max-width: 375px){
+          margin-right: 0;
+          margin-left: 0;
+        }
+      }
+      p{
+        font-weight: 500;
+        @media(max-width:375px){
+          display:none;
+        }
+      }
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+    }
+  }
+}
+.Alerts{
+  flex:1;
+  height:100%;
+  display:grid;
+  place-items: center;
+  font-size: 24px;
+  color: ObjRet($colors,bg-secondary);
+  font-weight: 500;
+  text-transform: capitalize;
+  @media(max-width:767px){
+    display:none;
+  }
+}
+@keyframes TimeLoading {
+  0%{
+    transform:rotate(0deg);
+  }
+  25%{
+    transform:rotate(90deg)
+  }
+  50%{
+    transform:rotate(180deg)
+  }
+  75%{
+    transform:rotate(275deg);
+  }
+  100%{
+    transform:rotate(360deg);
+  }
+}

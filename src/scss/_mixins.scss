@@ -1,0 +1,5 @@
+@mixin defStyle($size,$weight,$clr){
+    font-size:$size+px;
+    font-weight:$weight;
+    color: ObjRet($colors,$clr);
+}

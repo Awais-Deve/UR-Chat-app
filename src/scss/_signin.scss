@@ -1,0 +1,36 @@
+.signIn__page{
+    width:100vw;
+    height:100vh;
+    background: linear-gradient(253deg, rgba(34,193,195,1) 0%, rgba(227,246,252,1) 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    .inner{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content:center;
+        width:300px;
+        height:400px;
+        border-radius: 14px;
+        background: linear-gradient(107.56deg, #ffffff 0%, #f2f6f7 100%);
+        button{
+            @include defStyle(14, 400, hvr-color);
+            background-color: #22c1c3;
+            box-shadow: 0px 8px 40px rgba(0, 0, 0, 0.1);
+            border: 2px solid #22c1c3;
+            border-radius: 14px;
+            padding: 8px 35px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 32px;
+            letter-spacing: 0.5px;
+            transition: all 0.25s;
+            &:hover {
+              background-color: ObjRet($colors, hvr-color);
+              color: #22c1c3;
+              border-color: #22c1c3;
+            }
+        }
+    }
+}

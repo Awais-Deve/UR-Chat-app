@@ -1,0 +1,158 @@
+.App {
+  * {
+    font-family: "Poppins";
+  }
+  .app__body {
+    position:relative;
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(107.56deg, #ffffff 0%, #f2f6f7 100%);
+    overflow-x: hidden;
+    
+  }
+  .chat__sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    @media(max-width:767px){
+      width:100vw;
+    }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      padding: 30px 20px 26px 35px;
+      margin-bottom: 10px;
+      background-color: ObjRet($colors, bg-primary);
+      border-radius: 0px 0px 14px 14px;
+      .left {
+        display: flex;
+        align-items: center;
+        column-gap: 15px;
+        h2 {
+          @include defStyle(14, 500, primary-color);
+          text-transform: capitalize;
+        }
+      }
+      .right {
+        svg {
+          color: ObjRet($colors, bg-secondary);
+        }
+      }
+    }
+    .middle {
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+      padding: 24px 20px;
+      background-color: ObjRet($colors, bg-primary);
+      border-radius: 14px 14px 0px 0px;
+      overflow-y: scroll;
+      flex: 1;
+      &::-webkit-scrollbar {
+        width: 2px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: ObjRet($colors, bg-secondary);
+        border-radius: 30px;
+      }
+      .AddRoom{
+        display:flex;
+        padding:0 15px;
+        .inner{
+          position: relative;
+          width:100%;
+          height:38px;
+          overflow-y: hidden;
+        }
+        .text{
+          display: flex;
+          align-items: center;
+          column-gap: 8px;
+          cursor:pointer;
+        }
+        h1,svg{
+          font-weight: 500;
+          color: ObjRet($colors,primary-color);
+        }
+        .inp_field{
+          display: flex;
+          align-items: center;
+          transition: transform .25s;
+          position:absolute;
+          width:-webkit-fill-available;
+
+          &.show{
+            transform:translateY(-22px);
+          }
+          &.hide{
+            transform: translateY(38px);
+          }
+          input{
+            @include defStyle(12, 400, primary-color);
+            border-radius: 14px;
+            border: 1px solid rgba(150, 169, 186, 0.7);
+            width: 97%;
+            padding:8px 36px 8px 12px;
+            outline:none;
+            box-sizing: border-box;
+            @media(max-width:767px){
+              width:100%;
+            }
+          }
+          button{
+            position: absolute;
+            right:9px;
+            color:ObjRet($colors,bg-secondary);
+            &:disabled{
+              cursor: not-allowed;
+              opacity: 0.5;
+            }
+            svg{
+              color:inherit;
+              font-size: 20px;
+            }
+          }
+        }
+      }
+      a{
+        text-decoration: none;
+      }
+      .room {
+        display: flex;
+        align-items:center;
+        column-gap: 15px;
+        padding: 15px;
+        border-radius: 14px;
+        transition: all 0.25s;
+        cursor: pointer;
+        &.coverdBg,
+        &:hover{
+          background-color: ObjRet($colors, bg-secondary);
+          box-shadow: 0px 8px 40px rgba(0, 72, 251, 0.3);
+          cursor: pointer;
+          h2,
+          p ,svg{
+            color: ObjRet($colors, hvr-color);
+          }
+        }
+        button{
+          svg{
+            font-size: 20px;
+          }
+        }
+        .text {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          row-gap: 6px;
+        }
+        h2 {
+          @include defStyle(12, 500, primary-color);
+        }
+        p {
+          @include defStyle(10, 300, secondary-color);
+        }
+      }
+    }
+  }
+}

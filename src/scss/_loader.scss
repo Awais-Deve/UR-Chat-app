@@ -1,0 +1,30 @@
+.Loader{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    height:100%;
+    width:100%;
+    svg{
+        color:ObjRet($colors,bg-secondary);
+        animation-name: mainLoader;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in;
+    }
+}
+@keyframes mainLoader {
+    0%{
+        transform:rotate(0deg);
+      }
+      25%{
+        transform:rotate(90deg)
+      }
+      50%{
+        transform:rotate(180deg)
+      }
+      75%{
+        transform:rotate(275deg);
+      }
+      100%{
+        transform:rotate(360deg);
+      }}
